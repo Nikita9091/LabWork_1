@@ -6,6 +6,27 @@ int main()
 {
 	cout << "int " << sizeof(int) << endl << "short int " << sizeof(short int) << endl << "long int " << sizeof(long int) << endl << "float " << sizeof(float) << endl << "double " << sizeof(double) << endl << "long double " << sizeof(long double) << endl << "char " << sizeof(char) << endl << "bool " << sizeof(bool) << endl << endl;
 	return 0;
+	
+	
+	int value;
+	cin >> value;
+	unsigned int order = 32;
+	unsigned int mask = 1 << order - 1;
+	cout << value << "\n";
+	for (int i = 1; i <= order; i++)
+	{
+		putchar(value & mask ? '1' : '0');
+		value <<= 1;
+		if (i % 8 == 0)
+		{
+			cout << " ";
+		}
+		if (i % order - 1 == 0)
+		{
+			cout << " ";
+		}
+	}
+	return 0;
   
   
 }
