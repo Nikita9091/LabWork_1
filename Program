@@ -4,16 +4,17 @@ using namespace std;
 
 int main()
 {
+	setlocale(0, "");
+
 	cout << "int " << sizeof(int) << endl << "short int " << sizeof(short int) << endl << "long int " << sizeof(long int) << endl << "float " << sizeof(float) << endl << "double " << sizeof(double) << endl << "long double " << sizeof(long double) << endl << "char " << sizeof(char) << endl << "bool " << sizeof(bool) << endl << endl;
-	return 0;
 	
-	
+
+
 	int value;
 	cout << "Bведите целое число" << endl;
 	cin >> value;
 	unsigned int order = 32;
 	unsigned int mask = 1 << order - 1;
-	cout << value << "\n";
 	for (int i = 1; i <= order; i++)
 	{
 		putchar(value & mask ? '1' : '0');
@@ -27,19 +28,19 @@ int main()
 			cout << " ";
 		}
 	}
-	
-	
-	
+	cout << "\n\n";
+
+
 	union
 	{
-		float value;
+		float value1;
 		int b;
 	};
-	cout << "Bведите число типа float" << endl;  
-	cin >> value;
-	unsigned int a = sizeof(value) * 8;
-	int mask = 1 << a - 1;
-	
+	cout << "Bведите число типа float" << endl;
+	cin >> value1;
+	unsigned int a = sizeof(value1) * 8;
+	int mask1 = 1 << a - 1;
+
 	for (int i = 0; i < a; i++)
 	{
 		if (i == 1)
@@ -50,7 +51,7 @@ int main()
 		{
 			cout << " - экспонента  ";
 		}
-		if (b & mask)
+		if (b & mask1)
 		{
 			cout << 1;
 		}
@@ -60,37 +61,38 @@ int main()
 		}
 		b <<= 1;
 	}
-	cout << " - мантисса";
-	
-	
+	cout << " - мантисса" << "\n\n";
+
+
 	union
 	{
-		double value;
+		double value2;
 		int m[2];
 	};
 	cout << "Bведите число типа double" << endl;
-	cin >> value;
-	int mask = 1 << (sizeof(int) * 8 - 1);
+	cin >> value2;
+	int mask2 = 1 << (sizeof(int) * 8 - 1);
 	for (int i = 0; i < sizeof(int) * 8; i++)
 	{
-		cout << ((m[1] & mask) ? 1 : 0);
+		cout << ((m[1] & mask2) ? 1 : 0);
 		if (i == 0)
 		{
 			cout << " - знак  ";
 		}
-
 		if (i > 2 && i < 12 && i % 11 == 0)
 		{
-			cout << " - порядок  ";
+			cout << " - экспанента  ";
 		}
 
 		m[1] <<= 1;
 	}
+
 	for (int i = 0; i < sizeof(int) * 8; i++)
 	{
-		cout << ((m[0] & mask) ? 1 : 0);
+		cout << ((m[0] & mask2) ? 1 : 0);
 		m[0] <<= 1;
 	}
 	cout << " - мантисса" << "\n";
+
 	return 0;
 }
